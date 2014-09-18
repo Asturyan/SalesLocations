@@ -1,0 +1,22 @@
+<script type="text/javascript">
+    var locations = [];
+    {loop type="saleslocations_list" name="sales-locations-list" visible="1"}
+    locations.push({
+        'name': '{$COMPANY}',
+        'lat': '{$LAT}',
+        'lng': '{$LNG}',
+        'id': '{$ID}',
+        'address': '{$ADRESSE1}',
+        'zipcode': '{$ZIPCODE}',
+        'city': '{$CITY}',
+        {loop type="country" name="sales-locations-country" id="{$COUNTRY}"}
+        'country': '{$TITLE}'
+        {/loop}
+    });
+    {/loop}
+    var icon = '{image file="assets/img/icon.png" source="SalesLocations"}';
+</script>
+<script src="//maps.google.com/maps/api/js?sensor=false"></script>
+{javascripts file='assets/js/sales-locations.js' source="SalesLocations"}
+    <script src="{$asset_url}"></script>
+{/javascripts}

@@ -1,0 +1,41 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# Changes to be committed:
+#	new file:   Action/SalesLocations.php
+#	new file:   Config/config.xml
+#	new file:   Config/module.xml
+#	new file:   Config/routing.xml
+#	new file:   Config/schema.xml
+#	new file:   Config/sqldb.map
+#	new file:   Config/thelia.sql
+#	new file:   Controller/Admin/SalesLocationsController.php
+#	new file:   Controller/Front/DefaultController.php
+#	new file:   Event/SalesLocationsCreateOrUpdateEvent.php
+#	new file:   Event/SalesLocationsDeleteEvent.php
+#	new file:   Event/SalesLocationsEvent.php
+#	new file:   Event/SalesLocationsToggleVisibilityEvent.php
+#	new file:   Form/SalesLocationsCreationForm.php
+#	new file:   Form/SalesLocationsModificationForm.php
+#	new file:   Hook/Front.php
+#	new file:   I18n/en_US.php
+#	new file:   I18n/fr_FR.php
+#	new file:   Loop/AddressList.php
+#	new file:   Model/Base/SalesLocations.php
+#	new file:   Model/Base/SalesLocationsQuery.php
+#	new file:   Model/Map/SalesLocationsTableMap.php
+#	new file:   Model/SalesLocations.php
+#	new file:   Model/SalesLocationsQuery.php
+#	new file:   SalesLocations
+#	new file:   SalesLocations.php
+#	new file:   templates/backOffice/default/saleslocations-edit.html
+#	new file:   templates/backOffice/default/saleslocations.html
+#	new file:   templates/frontOffice/default/assets/img/icon.png
+#	new file:   templates/frontOffice/default/assets/js/sales-locations.js
+#	new file:   templates/frontOffice/default/main-javascript.html
+#	new file:   templates/frontOffice/default/sales-locations.html
+#
+

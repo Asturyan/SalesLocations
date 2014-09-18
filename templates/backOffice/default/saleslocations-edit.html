@@ -1,0 +1,206 @@
+{extends file="admin-layout.tpl"}
+
+{block name="check-resource"}module.SalesLocations{/block}
+{block name="check-access"}update{/block}
+
+{block name="page-title"}{intl l='Edit this sale location' d='saleslocations'}{/block}
+
+{block name="main-content"}
+
+    <div class="catalog edit-category">
+        <div id="wrapper" class="container">
+            {loop name="saleslocations_edit" type="saleslocations_list" visible="*" id="{$salelocation_id}" backend_context="1"}
+                <ul class="breadcrumb">
+                    <li><a href="{url path='/admin/home'}">{intl l="Home"}</a></li>
+                    <li><a href="{url path='/admin/modules'}">{intl l="Modules"}</a></li>
+                    <li><a href="{url path='/admin/module/SalesLocations'}">{intl l="Sales Locations" d='saleslocations'}</a></li>
+                    <li>{intl l='Editing sale location "%name"' name=$COMPANY d='saleslocations'}</li>
+                </ul>
+
+                <div class="row">
+    
+                    {* Define close url *}
+                    {assign var='close_url' value="{url path='/admin/module/SalesLocations'}"}
+    
+    
+                    <div class="col-md-12 general-block-decorator">
+                        <div class="row">
+                            <div class="col-md-7 title">
+                                {intl l='Editing sale location "%name"' name=$COMPANY d='saleslocations'}
+                            </div>
+    
+                            <div class="col-md-5 actions">
+                                <a {if $HAS_PREVIOUS != 0}href="{url path='/admin/module/SalesLocations/update' salelocation_id=$PREVIOUS}"{else}disabled="disabled"{/if} class="btn btn-default" title="{intl l='Edit previous sale location'}"><span class="glyphicon glyphicon-arrow-left"></span></a>
+                                <a {if $HAS_NEXT != 0}href="{url path='/admin/module/SalesLocations/update' salelocation_id=$NEXT}"{else}disabled="disabled"{/if} class="btn btn-default" title="{intl l='Edit next sale location'}"><span class="glyphicon glyphicon-arrow-right"></span></a>
+                            </div>
+                        </div>
+    
+                        <div class="row">
+                            <div class="col-md-12">
+    
+                                <div class="form-container">
+
+                                    {form name="admin.saleslocations.modification"}
+                                    <form method="POST" action="{url path='/admin/module/SalesLocations/save'}" {form_enctype form=$form} class="clearfix">
+
+                                        {include
+                                            file="includes/inner-form-toolbar.html"
+                                            hide_flags = true
+                                            close_url=$close_url
+                                        }
+
+                                        {* Be sure to get the sale location ID, even if the form could not be validated *}
+                                        <input type="hidden" name="salelocation_id" value="{$ID}" />
+
+                                        {form_hidden_fields form=$form}
+
+                                        {form_field form=$form field='success_url'}
+                                            <input type="hidden" name="{$name}" value="{$close_url}">
+                                        {/form_field}
+
+                                        {* Display error message if exist *}
+                                        {include file='includes/notifications.html' message=$form_error_message}
+
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                {form_field form=$form field='company'}
+                                                <div class="form-group {if $error}has-error{/if}">
+                                                    <label for="{$label_attr.for}" class="control-label">{$label} : </label>
+                                                    <input type="text" id="{$label_attr.for}" name="{$name}" required="required" title="{intl l='Company'}" placeholder="{intl l='Company'}" class="form-control" value="{$value}">
+                                                </div>
+                                                {/form_field}
+                                                
+                                                {form_field form=$form field='firstname'}
+                                                    <div class="form-group {if $error}has-error{/if}">
+                                                        <label for="{$label_attr.for}" class="control-label">{$label} : </label>
+                                                        <input type="text" id="{$label_attr.for}" name="{$name}" class="form-control" value="{$value}" title="{$label}" placeholder="{intl l='Firstname'}">
+                                                    </div>
+                                                {/form_field}
+                                        
+                                                {form_field form=$form field='lastname'}
+                                                    <div class="form-group {if $error}has-error{/if}">
+                                                        <label for="{$label_attr.for}" class="control-label">{$label} : </label>
+                                                        <input type="text" id="{$label_attr.for}" name="{$name}" class="form-control" value="{$value}" title="{$label}" placeholder="{intl l='Lastname'}">
+                                                    </div>
+                                                {/form_field}
+                                        
+                                                {form_field form=$form field='address1'}
+                                                    <div class="form-group {if $error}has-error{/if}">
+                                                        <label for="{$label_attr.for}" class="control-label">{$label} : </label>
+                                                        <input type="text" id="{$label_attr.for}" name="{$name}" class="form-control" value="{$value}" title="{$label}" placeholder="{intl l='Address'}">
+                                                    </div>
+                                        
+                                                    <div class="form-group">
+                                                        {form_field form=$form field='address2'}
+                                                            <input type="text" id="{$label_attr.for}" name="{$name}" class="form-control" value="{$value}" title="{$label}" placeholder="{intl l='Additional address'}">
+                                                        {/form_field}
+                                                    </div>
+                                        
+                                                    <div class="form-group">
+                                                        {form_field form=$form field='address3'}
+                                                            <input type="text" id="{$label_attr.for}" name="{$name}" class="form-control" value="{$value}" title="{$label}" placeholder="{intl l='Additional address'}">
+                                                        {/form_field}
+                                                    </div>
+                                                {/form_field}
+                                        
+                                                {form_field form=$form field='zipcode'}
+                                                    <div class="form-group {if $error}has-error{/if}">
+                                                        <label for="{$label_attr.for}" class="control-label">{$label} : </label>
+                                                        <input type="text" id="{$label_attr.for}" name="{$name}" class="form-control" value="{$value}" title="{$label}" placeholder="{intl l='Zip code'}">
+                                                    </div>
+                                                {/form_field}
+                                        
+                                                {form_field form=$form field='city'}
+                                                    <div class="form-group {if $error}has-error{/if}">
+                                                        <label for="{$label_attr.for}" class="control-label">{$label} : </label>
+                                                        <input type="text" id="{$label_attr.for}" name="{$name}" class="form-control" value="{$value}" title="{$label}" placeholder="{intl l='City'}">
+                                                    </div>
+                                                {/form_field}
+                                        
+                                                {form_field form=$form field='country'}
+                                                    <div class="form-group {if $error}has-error{/if}">
+                                                        <label for="{$label_attr.for}" class="control-label">{$label} : </label>
+                                                        <select name="{$name}" id="{$label_attr.for}" class="form-control">
+                                                            {loop type="country" name="country1"}
+                                                                <option value="{$ID}" {if $IS_DEFAULT}selected{/if}>{$TITLE}</option>
+                                                            {/loop}
+                                                        </select>
+                                                    </div>
+                                                {/form_field}
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <div class="well well-sm">
+                                                    <p class="title title-without-tabs">{intl l='Positions' d='saleslocations'}</p>
+                                                    {form_field form=$form field='lat'}
+                                                        <div class="form-group {if $error}has-error{/if}">
+                                                            <label for="{$label_attr.for}" class="control-label">{$label} : </label>
+                                                            <input type="text" id="{$label_attr.for}" name="{$name}" class="form-control" value="{$value}" title="{$label}" placeholder="{intl l='Latitude' d='saleslocations'}">
+                                                        </div>
+                                                    {/form_field}
+                                                    {form_field form=$form field='lng'}
+                                                        <div class="form-group {if $error}has-error{/if}">
+                                                            <label for="{$label_attr.for}" class="control-label">{$label} : </label>
+                                                            <input type="text" id="{$label_attr.for}" name="{$name}" class="form-control" value="{$value}" title="{$label}" placeholder="{intl l='Longitude' d='saleslocations'}">
+                                                        </div>
+                                                    {/form_field}
+                                                    <a href="#" class="btn btn-primary" id="find-position">{intl l='Find Positions' d='saleslocations'}</a>
+                                                </div>
+                                                {form_field form=$form field='visible'}
+                                                    <div class="form-group {if $error}has-error{/if}">
+                                                        <label for="{$label_attr.for}" class="control-label">{intl l='Visibility'}</label>
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox" id="{$label_attr.for}" name="{$name}" value="1" {if $value != 0}checked="checked"{/if}>
+                                                                {$label}
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                {/form_field}
+                                            </div>
+                                        </div>
+
+                                        {include
+                                            file="includes/inner-form-toolbar.html"
+                                            hide_submit_buttons = false
+                                            hide_flags = true
+                                            close_url=$close_url
+                                        }
+
+                                        <small>{intl l='Sale Location created on %date_create. Last modification: %date_change' date_create="{format_date date=$CREATE_DATE}" date_change="{format_date date=$UPDATE_DATE}" d='saleslocations'}</small>
+
+                                    </form>
+                                    {/form}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {/loop}
+        </div>
+    </div>
+
+{/block}
+
+{block name="javascript-initialization"}
+    <script src="//maps.google.com/maps/api/js?sensor=false"></script>
+    <script>
+        $(function() {
+            $('#find-position').click(function(ev) {
+                ev.preventDefault();
+                var geocoder = new google.maps.Geocoder();
+                var b = [];
+                b['address'] = $('#address1').val() + ' '+ $('#zipcode').val() + ' ' + $('#city').val();
+                console.log(b);
+                geocoder.geocode(b, function (results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        $('#lat').val(results[0].geometry.location.lat());
+                        $('#lng').val(results[0].geometry.location.lng());
+                    } else {
+                        alert("{intl l="Actual address can't be geolocated" d='saleslocations'}");
+                    }
+                });
+            });
+        });
+    </script>
+{/block}

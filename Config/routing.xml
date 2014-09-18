@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes xmlns="http://symfony.com/schema/routing"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="SalesLocations.home" path="/sales_locations" >
+        <default key="_controller">SalesLocations\Controller\Front\DefaultController::indexAction</default>
+    </route>
+
+    <route id="admin.saleslocations.default" path="/admin/module/SalesLocations">
+        <default key="_controller">SalesLocations\Controller\Admin\SalesLocationsController::defaultAction</default>
+    </route>
+    <route id="admin.saleslocations.create" path="/admin/module/SalesLocations/create">
+        <default key="_controller">SalesLocations\Controller\Admin\SalesLocationsController::createAction</default>
+    </route>
+    <route id="admin.saleslocations.update" path="/admin/module/SalesLocations/update">
+        <default key="_controller">SalesLocations\Controller\Admin\SalesLocationsController::updateAction</default>
+    </route>
+    <route id="admin.saleslocations.save" path="/admin/module/SalesLocations/save">
+        <default key="_controller">SalesLocations\Controller\Admin\SalesLocationsController::processUpdateAction</default>
+    </route>
+    <route id="admin.saleslocations.set-default" path="/admin/module/SalesLocations/toggle-online">
+        <default key="_controller">SalesLocations\Controller\Admin\SalesLocationsController::setToggleVisibilityAction</default>
+    </route>
+    <route id="admin.saleslocations.delete" path="/admin/module/SalesLocations/delete">
+        <default key="_controller">SalesLocations\Controller\Admin\SalesLocationsController::deleteAction</default>
+    </route>
+
+</routes>

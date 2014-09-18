@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database defaultIdMethod="native" name="thelia" namespace="SalesLocations\Model">
+    <!--
+    See propel documentation on http://propelorm.org for all information about schema file
+    -->
+    <table name="sales_locations">
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true" />
+        <column name="company" size="255" type="VARCHAR" />
+        <column name="firstname" required="true" size="255" type="VARCHAR" />
+        <column name="lastname" required="true" size="255" type="VARCHAR" />
+        <column name="lat" size="255" type="VARCHAR" />
+        <column name="lng" size="255" type="VARCHAR" />
+        <column name="address1" required="true" size="255" type="VARCHAR" />
+        <column name="address2" required="true" size="255" type="VARCHAR" />
+        <column name="address3" required="true" size="255" type="VARCHAR" />
+        <column name="zipcode" required="true" size="10" type="VARCHAR" />
+        <column name="city" required="true" size="255" type="VARCHAR" />
+        <column name="country_id" required="true" type="INTEGER" />
+        <column name="phone" size="20" type="VARCHAR" />
+        <column name="cellphone" size="20" type="VARCHAR" />
+        <column name="visible" type="tinyint" required="true" />
+        <behavior name="timestampable" />
+        <foreign-key foreignTable="country" name="fk_sales_locations_country_id" onDelete="RESTRICT" onUpdate="RESTRICT">
+            <reference foreign="id" local="country_id" />
+        </foreign-key>
+    </table>
+    <external-schema filename="local/config/schema.xml" referenceOnly="true" />
+</database>
